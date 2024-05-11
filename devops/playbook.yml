@@ -29,10 +29,10 @@
         name: nginx
         state: present
 
-    - name: Start Nginx service
-      service:
-        name: nginx
-        state: started
+    #- name: Start Nginx service
+    #  service:
+    #    name: nginx
+    #    state: started
 
     - name: Login to Docker Hub with token
       docker_login:
