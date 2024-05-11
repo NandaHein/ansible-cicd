@@ -9,7 +9,7 @@
     DOMAIN_NAME: "{{ domain_name }}"
     CONTAINER_NAME: "{{ container_name }}"
 
-tasks:
+  tasks:
     - name: Run Apt update
       apt:
         update_cache: yes
@@ -49,6 +49,7 @@ tasks:
         name: "{{ CONTAINER_NAME }}"
         image: "{{ IMAGE_NAME }}"
         state: started
+        pull: true
         restart_policy: always
         ports:
           - "3001:3000"
@@ -79,7 +80,7 @@ tasks:
       when: not nginx_config.stat.exists
       notify: Reload Nginx
 
-handlers:
+  handlers:
     - name: Reload Nginx
       service:
         name: nginx
